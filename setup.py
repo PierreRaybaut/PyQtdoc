@@ -30,5 +30,5 @@ setup(name=PROJECT_NAME, version=VERSION,
       requires=["PyQt%s" % VERSION.split('.')[0],],
       author = "Pierre Raybaut",
       author_email = 'pierre.raybaut@gmail.com',
-      url = 'http://code.google.com/p/winpython/',
+      url = 'https://github.com/PierreRaybaut/PyQtdoc',
       classifiers=['Operating System :: Microsoft :: Windows'])
