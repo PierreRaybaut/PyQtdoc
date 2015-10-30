@@ -21,11 +21,16 @@ VERSION = '5.5.1'
 setup(name=NAME, version=VERSION,
       description='%s installs Qt documentation for PyQt' % NAME,
       long_description="""%s installs Qt official documentation 
-(.ch files, i.e. Qt assitant format) in PyQt directory.
+(.ch files, i.e. Qt assistant format) in PyQt directory.
 
-%s version is indexed to NumPy version.
+%s version is indexed to Qt version.
 
 %s is part of the WinPython distribution project.
+
+Important note
+--------------
+
+    Since Qt5, ``QtAssistant`` does not register documentation placed in ``Lib\site-packages\PyQt5\doc\qch`` automatically. You must run the ``scripts\PyQtdoc_win_post_install.py`` script (this script should be executed by the Windows installer) or register them manually.
 """ % (NAME, NAME, NAME),
       data_files=[(r'Lib\site-packages\PyQt%s\doc\qch' % VERSION.split('.')[0],
                    get_data_files('qch'))],
