@@ -19,9 +19,9 @@ VERSION = '4.8.7'
 setup(name=PROJECT_NAME, version=VERSION,
       description='%s installs Qt documentation for PyQt' % PROJECT_NAME,
       long_description="""%s installs Qt official documentation 
-(.ch files, i.e. Qt assitant format) in PyQt directory.
+(.ch files, i.e. Qt assistant format) in PyQt directory.
 
-%s version is indexed to NumPy version.
+%s version is indexed to Qt version.
 
 %s is part of the WinPython distribution project.
 """ % (PROJECT_NAME, PROJECT_NAME, PROJECT_NAME),
