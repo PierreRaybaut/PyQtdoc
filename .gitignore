@@ -1,3 +1,11 @@
+assistant.qch
+designer.qch
+linguist.qch
+qmake.qch
+qt.qch
+MANIFEST
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

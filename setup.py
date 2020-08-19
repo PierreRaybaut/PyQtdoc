@@ -1,11 +1,13 @@
 # -*- coding: utf-8 -*-
 """PyQt doc"""
 
+import setuptools  # analysis:ignore
 from distutils.core import setup
 import os
 import os.path as osp
 
-assert os.name == 'nt'  # For Windows platforms only!
+assert os.name == "nt"  # For Windows platforms only!
+
 
 def get_data_files(dirname):
     """Return data files in directory *dirname*"""
@@ -15,12 +17,15 @@ def get_data_files(dirname):
             flist.append(osp.join(dirpath, fname))
     return flist
 
-NAME = 'PyQtdoc'
-VERSION = '5.5.1'
 
-setup(name=NAME, version=VERSION,
-      description='%s installs Qt documentation for PyQt' % NAME,
-      long_description="""%s installs Qt official documentation 
+NAME = "PyQtdoc"
+VERSION = "5.15.0"
+
+setup(
+    name=NAME,
+    version=VERSION,
+    description="%s installs Qt documentation for PyQt" % NAME,
+    long_description="""%s installs Qt official documentation 
 (.ch files, i.e. Qt assistant format) in PyQt directory.
 
 %s version is indexed to Qt version.
@@ -30,20 +35,14 @@ setup(name=NAME, version=VERSION,
 Important note
 --------------
 
-    Since Qt5, ``QtAssistant`` does not register documentation placed in ``Lib\site-packages\PyQt5\doc\qch`` automatically. You must run the ``scripts\PyQtdoc_win_post_install.py`` script (this script should be executed by the Windows installer) or register them manually.
-""" % (NAME, NAME, NAME),
-      data_files=[(r'Lib\site-packages\PyQt%s\doc\qch' % VERSION.split('.')[0],
-                   get_data_files('qch'))],
-      requires=["PyQt%s" % VERSION.split('.')[0],],
-      author = "Pierre Raybaut",
-      author_email = 'pierre.raybaut@gmail.com',
-      url = 'https://github.com/PierreRaybaut/PyQtdoc',
-      classifiers=['Operating System :: Microsoft :: Windows'],
-	  scripts=['%s_win_post_install.py' % NAME],
-	  options={"bdist_wininst":
-               {"install_script": "%s_win_post_install.py" % NAME,
-                "title": "%s %s" % (NAME, VERSION),
-                "user_access_control": "auto"},
-               "bdist_msi":
-               {"install_script": "%s_win_post_install.py" % NAME}},
-			   )
+    Since Qt5, ``QtAssistant`` cannot register documentation automatically. You must run the ``scripts\pyqtdoc.py`` script (with option `--register`) or register them manually.
+"""
+    % (NAME, NAME, NAME),
+    data_files=[(osp.join("Lib", "site-packages", NAME), get_data_files("qch"))],
+    requires=["PyQt5", "pyqt5_tools"],
+    author="Pierre Raybaut",
+    author_email="pierre.raybaut@gmail.com",
+    url="https://github.com/PierreRaybaut/PyQtdoc",
+    classifiers=["Operating System :: Microsoft :: Windows"],
+    scripts=["%s.py" % NAME.lower()],
+)
